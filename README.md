@@ -131,7 +131,8 @@ The file paths should be adjusted in the bash script.
 ## Training
 The settings for the training should be specified in `config/settings.yaml`.
 To start the training, it is necessary to replace `<path>` everywhere in the yaml file. 
-If the dataset is not used, the path can also be replaces by `None`.
+If the dataset is not used, the path can also be replaced by `None`.
+
 Two different models can be trained:
 - classification_model: standard transfer model for the classification task
 - object_det_model: transfer model for the object detection task
