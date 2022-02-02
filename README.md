@@ -56,7 +56,7 @@ The required python packages are listed in the `requirements.txt` file.
 pip install -r requirements.txt
 ```
 
-To convert data to the hdf5 format, the following compression package needs to be installed:
+To convert the MVSEC or the One Megapixel dataset to the hdf5 format, the following compression package needs to be installed:
 `https://github.com/conda-forge/blosc-hdf5-plugin-feedstock`
 
 To use the Waymo Open Dataset, the following package needs to be installed:
@@ -65,12 +65,16 @@ To use the Waymo Open Dataset, the following package needs to be installed:
 ## Datasets
 ### Caltech101 and N-Caltech101
 The paired dataset containing Caltech101 and N-Caltech101 can be downloaded [here](https://rpg.ifi.uzh.ch/data/VID2E/Paired_N-Caltech101.zip)
-The datasets should have the following format:
+The dataset should have the following format:
 
 
-    ├── N-Caltech101                 # Path in settings.yaml is the director of this folder
+    ├── N-Caltech101                 # Path in settings.yaml is the directory of this folder
     │   ├── accordion                # Classes as folder names
     │   │   ├── cam0_events_0001.npy 
+    │   └── ...
+    ├── Caltech101
+    │   ├── accordion
+    │   │   ├── image_0001.jpg
     │   └── ...
     ├── split_train_0.5_val_0.25_test_0.25_new
     │   ├── test.txt
@@ -81,8 +85,8 @@ The datasets should have the following format:
     │   ├── train.txt
     │   └── val.txt
    
-For the domain transfer, the extened caltech101 can be used as our method does not require paired frame and event data.
-Thus, the splits in the `split_train_0.5_val_0.25_test_0.25_new_extended` directory are by default used.
+As our method does not require paired frame and event data, the extened caltech101 can be used.
+Thus, the splits in the `split_train_0.5_val_0.25_test_0.25_new_extended` directory are used by default.
 
 The training splits defined in `<mode>.txt` should have the following content, where the number corresponds to the sample id in the specific class:
 ```bash
@@ -94,11 +98,13 @@ accordion:
 
 ### MVSEC
 The MVSEC dataset can be downloaded [here](https://daniilidis-group.github.io/mvsec/).
-Before training, the MVSEC dataset should be converted from a rosbag to hdf5 format, which can be done with the `datasets/export_data_from_rosbag.py`.
-The file paths can be adjusted in the file.
+Before training, the MVSEC dataset should be converted to hdf5, which can be done with the `datasets/export_data_from_rosbag.py` script.
+The command to run the script can be found at the top of the script.
+
 The MVSEC labels can be downloaded from the following repository:
 `https://github.com/alexzzhu/EventGAN`.
-The labels should be placed in the corresponding sequence directory:
+
+The labels should be placed in the directory of the corresponding sequence:
 
     ├── <sequence_name> 
     │   ├── processed_data.hdf5
@@ -120,11 +126,11 @@ The Waymo Open Dataset can be downloaded [here](https://waymo.com/intl/en_us/dat
 The One Megapixel Dataset can be downloaded [here](https://www.prophesee.ai/2020/11/24/automotive-megapixel-event-based-dataset/).
 To use the provided dataloader, the dataset should be converted to hdf5, which can be done with the `datasets/convert_oneMP_dataset.py` script.
 The compressed data can directly be converted to hdf5 by the following bash script in `datasets/decompress_convert_oneMP_dataset.sh`.
-The file paths can be adjusted in the file.
+The file paths should be adjusted in the bash script.
 
 ## Training
-The settings for the training can be specified in `config/settings.yaml`.
-To start the training, it is necessary to replace the '<path>' everywhere in the yaml file. 
+The settings for the training should be specified in `config/settings.yaml`.
+To start the training, it is necessary to replace `<path>` everywhere in the yaml file. 
 If the dataset is not used, the path can also be replaces by `None`.
 Two different models can be trained:
 - classification_model: standard transfer model for the classification task
