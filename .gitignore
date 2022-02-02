@@ -1,0 +1,8 @@
+*~
+*.pyc
+*#*
+*.xml
+*.jpg
+*.hdf5
+log/*
+.idea/*

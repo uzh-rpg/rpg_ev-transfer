@@ -1,0 +1,75 @@
+dataset:
+  # ['Caltech101_gray', 'NCaltech101_events', 'Waymo_gray', 'OneMpProphesee_events', 'MVSEC_events']
+  name_a: 'Caltech101_gray'
+  name_b: 'NCaltech101_events'
+  caltech101:
+    dataset_path: <path>
+    shape: [184, 240]
+  waymo:
+    dataset_path: <path>
+    shape: [192, 352]
+  ncaltech101:
+    dataset_path: <path>
+    shape: [184, 240]
+    nr_events_window: 25000
+    event_representation: 'histogram'  # ['histogram', 'voxel_grid']
+    nr_temporal_bins: 5  # Only used for 'voxel_grid'
+  prophesee:
+    dataset_path: <path>
+    shape: [160, 288]  # [240, 304]
+    nr_events_window: 100000
+    event_representation: 'histogram'  # ['histogram', 'voxel_grid']
+    nr_temporal_bins: 5  # Only used for 'voxel_grid'
+  onempprophesee:
+    dataset_path: <path>
+    shape: [192, 352]
+    nr_events_window: 500000
+    event_representation: 'histogram'  # ['histogram', 'voxel_grid']
+    nr_temporal_bins: 5  # Only used for 'voxel_grid'
+  mvsec:
+    dataset_path: <path>
+    shape: [192, 352]
+    nr_events_window: 40000  # 25000 ~ Histogram
+    event_representation: 'histogram'  # ['histogram', 'voxel_grid']
+    nr_temporal_bins: 5  # Only used for 'voxel_grid'
+dir:
+  log: <path>
+model:
+  # ['classification_model', 'object_det_model]
+  model_name: 'classification_model'
+  use_decoder_a: False
+  use_decoder_b: True
+  use_task_a: True
+  use_task_b: False
+  use_cycle_a_b: True
+  use_cycle_b_a: False
+  use_cycle_task: True
+  cross_refinement_a: False
+  cross_refinement_b: True
+optim:
+  batch_size_a: 20  # 20
+  batch_size_b: 20  # 20
+  lr_discriminator: 1e-4 # 1e-4
+  lr_front: 1e-4  # 1e-4
+  lr_back: 1e-4  # 1e-4
+  lr_decoder: 1e-5  # 1e-5
+  lr_decay: 0.9999  # 0.9999
+  disc_iter: 2  # 2
+  front_iter: 1  # 1
+  num_epochs: 5000
+  weight_generator_loss: 1  # 1
+  weight_discriminator_loss: 1  # 1
+  weight_task_loss: 2  # 1
+  weight_KL_loss: 0.01
+  weight_reconstruction_sensor_a_loss: 2
+  weight_reconstruction_sensor_b_loss: 2
+  weight_refinement_loss: 1
+  weight_cycle_loss: 1
+  weight_smoothness_loss: 1
+checkpoint:
+  resume_training: False
+  resume_file: <path>
+hardware:
+  # num_cpu_workers: {-1: auto, 0: main thread, >0: ...}
+  num_cpu_workers: 8
+  gpu_device: 0  # [0 or 'cpu']
