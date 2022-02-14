@@ -47,6 +47,11 @@ by 93%) and classification by 2.7% accuracy.
 
 ## Installation
 ### Dependencies
+If desired, a conda environment can be created using the followig command:
+```bash
+conda create -n <env_name>
+```
+
 As an initial step, the wheel package needs to be installed with the following command:
 ```bash
 pip install wheel
@@ -57,10 +62,10 @@ pip install -r requirements.txt
 ```
 
 To convert the MVSEC or the One Megapixel dataset to the hdf5 format, the following compression package needs to be installed:
-`https://github.com/conda-forge/blosc-hdf5-plugin-feedstock`
+<https://github.com/conda-forge/blosc-hdf5-plugin-feedstock>
 
 To use the Waymo Open Dataset, the following package needs to be installed:
-`https://github.com/gdlg/simple-waymo-open-dataset-reader`
+<https://github.com/gdlg/simple-waymo-open-dataset-reader>
 
 ## Datasets
 ### Caltech101 and N-Caltech101
@@ -102,7 +107,7 @@ Before training, the MVSEC dataset should be converted to hdf5, which can be don
 The command to run the script can be found at the top of the script.
 
 The MVSEC labels can be downloaded from the following repository:
-`https://github.com/alexzzhu/EventGAN`.
+<https://github.com/alexzzhu/EventGAN>.
 
 The labels should be placed in the directory of the corresponding sequence:
 
@@ -145,19 +150,19 @@ CUDA_VISIBLE_DEVICES=<GPU_ID>, python train.py --settings_file config/settings.y
 
 # Acknowledgement
 Several network architectures were adapted from:<br />
-`https://github.com/HsinYingLee/DRIT`
+<https://github.com/HsinYingLee/DRIT>
 
 The general training framework was inspired by:<br />
-`https://github.com/alexzzhu/EventGAN`
+<https://github.com/alexzzhu/EventGAN>
 
 The object detection network was adapted from:<br />
-`https://github.com/eriklindernoren/PyTorch-YOLOv3/`
+<https://github.com/eriklindernoren/PyTorch-YOLOv3/>
 
 The mvsec extraction script was adapted from:<br />
-`https://github.com/SensorsINI/ECCV_network_grafting_algorithm`
+<https://github.com/SensorsINI/ECCV_network_grafting_algorithm>
 
 The optimizer was adapted from:<br />
-`https://github.com/LiyuanLucasLiu/RAdam`
+<https://github.com/LiyuanLucasLiu/RAdam>
 
 The ssim loss was adapted from:<br />
-`https://github.com/Po-Hsun-Su/pytorch-ssim`
+<https://github.com/Po-Hsun-Su/pytorch-ssim>
