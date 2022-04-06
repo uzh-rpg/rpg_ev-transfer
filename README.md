@@ -9,7 +9,7 @@
 
 This is the code for the paper **Bridging the Gap between Events and Frames through Unsupervised DomainAdaptation** 
 ([PDF](http://rpg.ifi.uzh.ch/docs/RAL22_Messikommer.pdf)) by Nico Messikommer, [Daniel Gehrig](https://danielgehrig18.github.io), 
-Mathias Gehrig, and [Davide Scaramuzza](http://rpg.ifi.uzh.ch/people_scaramuzza.html).
+[Mathias Gehrig](https://magehrig.github.io/), and [Davide Scaramuzza](http://rpg.ifi.uzh.ch/people_scaramuzza.html).
 
 If you use any of this code, please cite the following publication:
 
